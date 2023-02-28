@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private float jumpPower = 13f;
     [SerializeField] private float turnSpeed = 15f;
+    [SerializeField] private Transform[] rayStartPoint;
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -17,11 +18,12 @@ public class Movement : MonoBehaviour
     void Update()
     {
         TakeInput();
+        print(OnGroundCheck());
     }
 
     private void TakeInput()
     {
-        if (Input.GetKeyDown(KeyCode.Space))   //GetKeyDown-------> Sadece bir kez algýlar
+        if (Input.GetKeyDown(KeyCode.Space) && OnGroundCheck() == true)   //GetKeyDown-------> Sadece bir kez algýlar
         {                                      //GetKey-----------> Basýlý tutulduðu süre boyunca algýlar
 
             rigidbody.velocity = new Vector3(rigidbody.velocity.x, Mathf.Clamp((jumpPower * 100) * Time.deltaTime, 0f, 15f), 0f);                                   
@@ -46,6 +48,27 @@ public class Movement : MonoBehaviour
         else
         {
             rigidbody.velocity = new Vector3(0f, rigidbody.velocity.y, 0f);
+        }
+    }
+
+    private bool OnGroundCheck()
+    {
+        bool hit = false;
+
+        for (int i = 0; i < rayStartPoint.Length; i++)
+        {
+            hit = Physics.Raycast(rayStartPoint[i].position, -rayStartPoint[i].transform.up, 0.25f);
+            Debug.DrawRay(rayStartPoint[i].position, -rayStartPoint[i].transform.up * 0.25f, Color.red);
+        }
+
+        
+        if (hit == true)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }
