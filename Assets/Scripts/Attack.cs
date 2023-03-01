@@ -6,6 +6,12 @@ public class Attack : MonoBehaviour
 {
     [SerializeField] private GameObject ammo;
     [SerializeField] private Transform fireTransform;
+    [SerializeField] private int ammoCount = 5;
+
+
+    [SerializeField] private float fireRate = 0.5f;
+
+    private float currenFireRate = 0f;
     void Start()
     {
         
@@ -14,11 +20,18 @@ public class Attack : MonoBehaviour
 
     void Update()
     {
+        if (currenFireRate > 0f)
+        {
+            currenFireRate -= Time.deltaTime;
+        }
         if (Input.GetMouseButtonDown(0))
         {
-            Fire();
+            if (currenFireRate <= 0 && ammoCount > 0)
+            {
+                Fire();
+            }
+            
         }
-        print(transform.eulerAngles.y);
     }
 
     private void Fire()
@@ -34,6 +47,8 @@ public class Attack : MonoBehaviour
         {
             targetRotation = 90f;
         }
+        ammoCount--;
+        currenFireRate = fireRate;
         Instantiate(ammo, fireTransform.position, Quaternion.Euler(0f,0f,targetRotation));
     }
 }

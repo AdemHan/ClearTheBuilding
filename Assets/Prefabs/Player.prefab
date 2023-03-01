@@ -315,6 +315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammo: {fileID: 7258163265526620361, guid: 0e8a13636983017419190bacc670061f, type: 3}
   fireTransform: {fileID: 6389611884451257854}
+  fireRate: 0.5
 --- !u!114 &6389611884367979927
 MonoBehaviour:
   m_ObjectHideFlags: 0
