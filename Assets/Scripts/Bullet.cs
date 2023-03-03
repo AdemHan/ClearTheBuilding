@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float speed = 10;
-    // Start is called before the first frame update
+    public GameObject owner;
     void Start()
     {
         
@@ -16,4 +16,12 @@ public class Bullet : MonoBehaviour
     {
         transform.position += transform.up * speed * Time.deltaTime;
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.GetComponent<Target>() == false)
+        {
+            Destroy(gameObject);
+        }
+    }
+
 }

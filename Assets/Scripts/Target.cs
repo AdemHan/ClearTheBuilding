@@ -19,15 +19,21 @@ public class Target : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<Bullet>() == true )
+        Bullet bullet = other.gameObject.GetComponent<Bullet>();
+
+        if (bullet)
         {
-            Destroy(other.gameObject);
-            currentHealth--;
-            if (currentHealth == 0)
+            if (bullet && bullet.owner != gameObject)
             {
-                Die();
+                currentHealth--;
+
+                if (currentHealth == 0)
+                {
+                    Die();
+                }
+
+                Destroy(other.gameObject);
             }
-            
         }
     }
 

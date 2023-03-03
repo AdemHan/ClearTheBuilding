@@ -191,6 +191,8 @@ GameObject:
   - component: {fileID: 6389611884367979926}
   - component: {fileID: 3723726947177869685}
   - component: {fileID: 6389611884367979927}
+  - component: {fileID: 841208364863970479}
+  - component: {fileID: 5939383265650204848}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -315,6 +317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammo: {fileID: 7258163265526620361, guid: 0e8a13636983017419190bacc670061f, type: 3}
   fireTransform: {fileID: 6389611884451257854}
+  ammoCount: 5
   fireRate: 0.5
 --- !u!114 &6389611884367979927
 MonoBehaviour:
@@ -335,6 +338,32 @@ MonoBehaviour:
   - {fileID: 460246582}
   - {fileID: 1477152679}
   - {fileID: 396264764}
+--- !u!114 &841208364863970479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6389611884367979932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656f4350a3ec3024699e17d378ba0cdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+--- !u!135 &5939383265650204848
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6389611884367979932}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.0876272
+  m_Center: {x: -0.03060174, y: 0.025864482, z: 0.022204638}
 --- !u!1 &7836000968850817574
 GameObject:
   m_ObjectHideFlags: 0
