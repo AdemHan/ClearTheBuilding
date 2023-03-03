@@ -354,6 +354,7 @@
 "Assets/Scripts/Attack.cs"
 "Assets/Scripts/Bullet.cs"
 "Assets/Scripts/Movement.cs"
+"Assets/Scripts/Target.cs"
 -langversion:9.0
 
 /deterministic
