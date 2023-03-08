@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     
     void Update()
     {
-        ChecjCanMoveRight();
+        CheckCanMoveRight();
 
         MoveTowards();
     }
@@ -25,16 +25,17 @@ public class Enemy : MonoBehaviour
     {
         if (!canMoveRight)
         {
-            transform.position = Vector3.MoveTowards(transform.position, movePoints[0].position, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(movePoints[0].position.x, transform.position.y, movePoints[0].position.z), speed * Time.deltaTime);
+            LookAtTheTarget(movePoints[0].position);
         }
         else
         {
-            transform.position = Vector3.MoveTowards(transform.position, movePoints[1].position, speed * Time.deltaTime);
-
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(movePoints[1].position.x, transform.position.y, movePoints[0].position.z), speed * Time.deltaTime);
+            LookAtTheTarget(movePoints[1].position);
         }
     }
 
-    private void ChecjCanMoveRight()
+    private void CheckCanMoveRight()
     {
         if (Vector3.Distance(transform.position, movePoints[0].position) <= 0 )
         {
@@ -47,4 +48,12 @@ public class Enemy : MonoBehaviour
             print("Move Left");
         }
     }
+
+    private void LookAtTheTarget(Vector3 newTarget)
+    {
+        Vector3 newLookPosition = new Vector3(newTarget.x, transform.position.y, newTarget.z);
+        Quaternion targetRotation = Quaternion.LookRotation(newLookPosition - transform.position);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, speed * Time.deltaTime);
+    }
 }
+//newLookPosition - transform.position
