@@ -6,7 +6,11 @@ public class Attack : MonoBehaviour
 {
     [SerializeField] private GameObject ammo;
     [SerializeField] private Transform fireTransform;
-    [SerializeField] private int ammoCount = 5;
+    [SerializeField] private int maxAmmoCount = 5;
+    private int ammoCount = 0;
+    public int GetAmmo { get { return ammoCount; } 
+        set { ammoCount = value; 
+            if (ammoCount > maxAmmoCount) ammoCount = maxAmmoCount; } }
 
 
     [SerializeField] private float fireRate = 0.5f;
@@ -14,7 +18,7 @@ public class Attack : MonoBehaviour
     private float currenFireRate = 0f;
     void Start()
     {
-        
+        ammoCount = maxAmmoCount;
     }
 
 
