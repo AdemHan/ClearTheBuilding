@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
+    [SerializeField] private GameObject[] weapons;
     [SerializeField] private GameObject ammo;
     [SerializeField] private Transform fireTransform;
     [SerializeField] private int maxAmmoCount = 5;
@@ -55,6 +56,12 @@ public class Attack : MonoBehaviour
         {
             currenFireRate -= Time.deltaTime;
         }
+        PlayerInput();
+
+    }
+
+    private void PlayerInput()
+    {
         if (isPlayer)
         {
             if (Input.GetMouseButtonDown(0))
@@ -63,10 +70,22 @@ public class Attack : MonoBehaviour
                 {
                     Fire();
                 }
-
+            }
+            switch (Input.inputString)
+            {
+                case "1":
+                    weapons[0].gameObject.SetActive(true);
+                    weapons[1].gameObject.SetActive(false);
+                    break;
+                case "2":
+                    weapons[0].gameObject.SetActive(false);
+                    weapons[1].gameObject.SetActive(true);
+                    break;
+                default:
+                    print("this is not valid key");
+                    break;
             }
         }
-        
     }
 
     public void Fire()
@@ -84,7 +103,7 @@ public class Attack : MonoBehaviour
         }
         ammoCount--;
         currenFireRate = fireRate;
-        GameObject bulletClone = Instantiate(ammo, fireTransform.position, Quaternion.Euler(0f,0f,targetRotation));
+        GameObject bulletClone = Instantiate(ammo, fireTransform.position, Quaternion.Euler(0f, 0f, targetRotation));
         bulletClone.GetComponent<Bullet>().owner = gameObject;
     }
 }
