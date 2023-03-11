@@ -9,12 +9,12 @@ public class Movement : MonoBehaviour
     [SerializeField] private float jumpPower = 13f;
     [SerializeField] private float turnSpeed = 15f;
     [SerializeField] private Transform[] rayStartPoint;
-    void Start()
+
+    private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
     }
-
-
+    
     void Update()
     {
         TakeInput();

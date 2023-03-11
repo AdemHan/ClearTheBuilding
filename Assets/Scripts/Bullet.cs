@@ -6,12 +6,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float speed = 10;
     public GameObject owner;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    
     void Update()
     {
         transform.position += transform.up * speed * Time.deltaTime;

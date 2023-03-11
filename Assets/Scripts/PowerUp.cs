@@ -21,9 +21,14 @@ public class PowerUp : MonoBehaviour
     [SerializeField] Vector3 scaleVector;
     [SerializeField] private float scaleFactor;
     private Vector3 startScale;
-    void Start()
+
+    private void Awake()
     {
         startScale = transform.localScale;
+
+    }
+    void Start()
+    {
 
         if (healtPowerUp == true && ammoPowerUp == true)
         {

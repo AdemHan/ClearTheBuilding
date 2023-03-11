@@ -17,11 +17,13 @@ public class Enemy : MonoBehaviour
     private bool isReloaded = false;
     private Attack attack;
 
-    void Start()
+    private void Awake()
     {
         attack = GetComponent<Attack>();
         aimTransform = attack.GetFireTransform;
     }
+
+    
 
     
     void Update()

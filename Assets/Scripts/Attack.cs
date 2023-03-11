@@ -103,10 +103,12 @@ public class Attack : MonoBehaviour
             switch (Input.inputString)
             {
                 case "1":
+                    weapons[1].gameObject.GetComponent<Weapons>().GetCurrentWeaponAmmoCount = ammoCount;
                     weapons[0].gameObject.SetActive(true);
                     weapons[1].gameObject.SetActive(false);
                     break;
                 case "2":
+                    weapons[0].gameObject.GetComponent<Weapons>().GetCurrentWeaponAmmoCount = ammoCount;
                     weapons[0].gameObject.SetActive(false);
                     weapons[1].gameObject.SetActive(true);
                     break;

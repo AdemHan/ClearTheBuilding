@@ -10,10 +10,24 @@ public class Weapons : MonoBehaviour
     [SerializeField] private int clipSize;
     private int currentAmmoCount;
 
-    void Start()
+    public int GetCurrentWeaponAmmoCount
+    {
+        get
+        {
+            return currentAmmoCount;
+        }
+        set
+        {
+            currentAmmoCount = value;
+        }
+    }
+
+    private void Awake()
     {
         currentAmmoCount = clipSize;
+
     }
+
 
     private void OnEnable()
     {
@@ -22,7 +36,7 @@ public class Weapons : MonoBehaviour
             attack.GetFireTransform = fireTransform;
             attack.GetFireRate = fireRate;
             attack.GetClipSize = clipSize;
-            attack.GetAmmo = clipSize;
+            attack.GetAmmo = currentAmmoCount;
         }
     }
 }

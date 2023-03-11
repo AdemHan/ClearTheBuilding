@@ -21,16 +21,12 @@ public class Target : MonoBehaviour
             }
         }
     }
-    void Start()
+    private void Awake()
     {
         currentHealth = maxHealth;
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
+    
 
     private void OnTriggerEnter(Collider other)
     {
