@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float shootRange = 10f;  //ates mesafesi
     [SerializeField] private float reloadTime = 5f;
     [SerializeField] private LayerMask shootLayer;
-    [SerializeField] private Transform aimTransform;
+    private Transform aimTransform;
                                     
     // Fiziksel islemlerde tag yerine layer kullanmak daha mantýklý
 
@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         attack = GetComponent<Attack>();
+        aimTransform = attack.GetFireTransform;
     }
 
     

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5379571199537565543}
   - component: {fileID: 1264981437830192713}
   - component: {fileID: 5379571199537565542}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Health Power Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ MonoBehaviour:
   healtAmount: 5
   ammoPowerUp: 0
   ammoAmount: 5
-  turnSpeed: -0.1
+  turnVector: {x: 0, y: 0, z: 0}
   period: 2
   scaleVector: {x: 0, y: 0, z: 0}
   scaleFactor: 0

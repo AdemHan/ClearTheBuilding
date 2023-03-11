@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 8667676504437706902}
   - component: {fileID: 2553483475249086904}
   - component: {fileID: 2553483475249086905}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bullet Power Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 8667676505864936625}
   - component: {fileID: 8667676505864936624}
   - component: {fileID: 8667676505864936639}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
