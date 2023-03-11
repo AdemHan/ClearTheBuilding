@@ -6,6 +6,11 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private Transform[] movePoints;
     [SerializeField] private float speed = 5f;
+    [SerializeField] private float shootRange = 10f;  //ates mesafesi
+    [SerializeField] private LayerMask shootLayer;
+    [SerializeField] private Transform aimTransform;
+                                    
+    // Fiziksel islemlerde tag yerine layer kullanmak daha mantýklý
 
     private bool canMoveRight = false;
     void Start()
@@ -19,6 +24,8 @@ public class Enemy : MonoBehaviour
         CheckCanMoveRight();
 
         MoveTowards();
+
+        Aim();
     }
     
     private void MoveTowards()
@@ -47,6 +54,13 @@ public class Enemy : MonoBehaviour
             canMoveRight = false;
             print("Move Left");
         }
+    }
+
+    private void Aim()
+    {
+        bool hit = Physics.Raycast(aimTransform.position, transform.forward, shootRange, shootLayer);
+        Debug.DrawLine(aimTransform.position, transform.forward * shootRange, Color.blue);
+        print("Can Shoot: " + hit);
     }
 
     private void LookAtTheTarget(Vector3 newTarget)
