@@ -7,12 +7,14 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Transform[] movePoints;
     [SerializeField] private float speed = 5f;
     [SerializeField] private float shootRange = 10f;  //ates mesafesi
+    [SerializeField] private float reloadTime = 5f;
     [SerializeField] private LayerMask shootLayer;
     [SerializeField] private Transform aimTransform;
                                     
     // Fiziksel islemlerde tag yerine layer kullanmak daha mantýklý
 
     private bool canMoveRight = false;
+    private bool isReloaded = false;
     private Attack attack;
 
     void Start()
@@ -32,8 +34,22 @@ public class Enemy : MonoBehaviour
         Aim();
     }
 
+    private void Reload()
+    {
+        attack.GetAmmo = attack.GetClipSize;
+        isReloaded = false;
+        print("Reloaded");
+    }
+
+    //Invoke veriler X surede kaybolurlar. Metodun adi string seklinde yazilir.
     private void EnemyAttack()
     {
+        if (attack.GetAmmo <= 0 && isReloaded == false)   
+        {
+            Invoke("Reload", reloadTime);
+            isReloaded = true;
+        }
+
         if (attack.GetCurrentFireRate <= 0f && attack.GetAmmo > 0 && Aim())
         {
             attack.Fire();

@@ -9,9 +9,7 @@ public class Attack : MonoBehaviour
     [SerializeField] private int maxAmmoCount = 5;
     [SerializeField] private bool isPlayer = false;
     private int ammoCount = 0;
-    public int GetAmmo { get { return ammoCount; } 
-        set { ammoCount = value; 
-            if (ammoCount > maxAmmoCount) ammoCount = maxAmmoCount; } }
+
 
 
     [SerializeField] private float fireRate = 0.5f;
@@ -26,6 +24,23 @@ public class Attack : MonoBehaviour
         set
         {
             currenFireRate = value;
+        }
+    }
+    public int GetAmmo
+    {
+        get { return ammoCount; }
+        set
+        {
+            ammoCount = value;
+            if (ammoCount > maxAmmoCount) ammoCount = maxAmmoCount;
+        }
+    }
+
+    public int GetClipSize
+    {
+        get
+        {
+            return maxAmmoCount;
         }
     }
     void Start()
