@@ -13,23 +13,39 @@ public class Enemy : MonoBehaviour
     // Fiziksel islemlerde tag yerine layer kullanmak daha mantýklý
 
     private bool canMoveRight = false;
+    private Attack attack;
+
     void Start()
     {
-        
+        attack = GetComponent<Attack>();
     }
 
     
     void Update()
     {
+        EnemyAttack();
+
         CheckCanMoveRight();
 
         MoveTowards();
 
         Aim();
     }
-    
+
+    private void EnemyAttack()
+    {
+        if (attack.GetCurrentFireRate <= 0f && attack.GetAmmo > 0 && Aim())
+        {
+            attack.Fire();
+        }
+    }
+
     private void MoveTowards()
     {
+        if (Aim() && attack.GetAmmo > 0)
+        {
+            return;
+        }
         if (!canMoveRight)
         {
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(movePoints[0].position.x, transform.position.y, movePoints[0].position.z), speed * Time.deltaTime);
@@ -56,11 +72,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void Aim()
+    private bool Aim()
     {
         bool hit = Physics.Raycast(aimTransform.position, transform.forward, shootRange, shootLayer);
         Debug.DrawLine(aimTransform.position, transform.forward * shootRange, Color.blue);
-        print("Can Shoot: " + hit);
+        return hit;
     }
 
     private void LookAtTheTarget(Vector3 newTarget)

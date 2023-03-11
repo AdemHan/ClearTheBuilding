@@ -7,6 +7,7 @@ public class Attack : MonoBehaviour
     [SerializeField] private GameObject ammo;
     [SerializeField] private Transform fireTransform;
     [SerializeField] private int maxAmmoCount = 5;
+    [SerializeField] private bool isPlayer = false;
     private int ammoCount = 0;
     public int GetAmmo { get { return ammoCount; } 
         set { ammoCount = value; 
@@ -16,6 +17,17 @@ public class Attack : MonoBehaviour
     [SerializeField] private float fireRate = 0.5f;
 
     private float currenFireRate = 0f;
+    public float GetCurrentFireRate
+    {
+        get
+        {
+            return currenFireRate;
+        }
+        set
+        {
+            currenFireRate = value;
+        }
+    }
     void Start()
     {
         ammoCount = maxAmmoCount;
@@ -28,17 +40,21 @@ public class Attack : MonoBehaviour
         {
             currenFireRate -= Time.deltaTime;
         }
-        if (Input.GetMouseButtonDown(0))
+        if (isPlayer)
         {
-            if (currenFireRate <= 0 && ammoCount > 0)
+            if (Input.GetMouseButtonDown(0))
             {
-                Fire();
+                if (currenFireRate <= 0 && ammoCount > 0)
+                {
+                    Fire();
+                }
+
             }
-            
         }
+        
     }
 
-    private void Fire()
+    public void Fire()
     {
         float difference = 180f - transform.eulerAngles.y;
         float targetRotation = -90f;
