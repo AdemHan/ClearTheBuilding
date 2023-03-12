@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    [SerializeField] private int maxHealth = 3;
+    [SerializeField] private int maxHealth = 2;
+    [SerializeField] private GameObject hitFx;
+    [SerializeField] private GameObject deadFx;
+
+
     private int currentHealth;
     public int GetHealth
     {
@@ -38,11 +42,17 @@ public class Target : MonoBehaviour
             {
                 currentHealth--;
 
+                if (hitFx != null)
+                {
+                    Instantiate(hitFx, transform.position, Quaternion.identity);
+                }
+
                 if (currentHealth == 0)
                 {
                     Die();
                 }
 
+                
                 Destroy(other.gameObject);
             }
         }
@@ -50,6 +60,11 @@ public class Target : MonoBehaviour
 
     private void Die()
     {
+        if (deadFx != null)
+        {
+            Instantiate(deadFx, transform.position, Quaternion.identity);
+
+        }
         Destroy(gameObject);
     }
 }

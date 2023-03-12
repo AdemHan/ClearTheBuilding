@@ -320,10 +320,7 @@ MonoBehaviour:
   - {fileID: 510082726906693918}
   - {fileID: 1483450573588590798}
   ammo: {fileID: 7258163265526620361, guid: 0e8a13636983017419190bacc670061f, type: 3}
-  fireTransform: {fileID: 6389611884451257854}
-  maxAmmoCount: 5
   isPlayer: 1
-  fireRate: 0.5
 --- !u!114 &6389611884367979927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,6 +353,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 20
+  hitFx: {fileID: 2195440756876210227, guid: eaa0a91da33cf9e45b104e0a7dae75b8, type: 3}
+  deadFx: {fileID: 7921456826659470355, guid: afc675f7e2d23224880a3df2132f7924, type: 3}
 --- !u!135 &5939383265650204848
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -687,11 +686,6 @@ Transform:
 --- !u!1 &510082726906693918 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6897363633097419741, guid: a54f43ed3420a004cb07527443eeabe5, type: 3}
-  m_PrefabInstance: {fileID: 6389611884062843587}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &6389611884451257854 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1803222845, guid: a54f43ed3420a004cb07527443eeabe5, type: 3}
   m_PrefabInstance: {fileID: 6389611884062843587}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7478652843654747905

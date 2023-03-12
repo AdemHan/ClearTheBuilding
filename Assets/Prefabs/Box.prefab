@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7947495498106035919}
   - component: {fileID: 6410224342359333604}
   - component: {fileID: 240455761}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,6 +128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 656f4350a3ec3024699e17d378ba0cdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 3
+  hitFx: {fileID: 4184615454219157190, guid: acdfd943c7ba0f34bab2941688100f1f, type: 3}
+  deadFx: {fileID: 7117714018664478787, guid: f95895c58a0bc3b4aa2c114cb26c0dd1, type: 3}
 --- !u!65 &240455761
 BoxCollider:
   m_ObjectHideFlags: 0
